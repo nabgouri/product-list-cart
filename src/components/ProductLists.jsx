@@ -1,7 +1,12 @@
+import { productsData } from "../utils/data";
+import Product from "./Product";
+
 export default function ProductLists() {
   return (
     <ul>
-      <li></li>
+      {productsData.map((product) => (
+        <Product product={product} />
+      ))}
     </ul>
   );
 }
