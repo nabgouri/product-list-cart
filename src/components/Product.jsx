@@ -1,3 +1,4 @@
+import { Icon } from "@iconify/react";
 export default function Product({ product }) {
   const { image, name, category, price } = product;
   return (
@@ -5,10 +6,13 @@ export default function Product({ product }) {
       <picture>
         <source srcSet={image.mobile} media="(max-width: 798px)" />
         <source srcSet={image.tablet} media="(max-width: 1440px)" />
-        <img src={image.desktop} alt="" />
+        <img src={image.desktop} alt="" className="rounded-lg" />
       </picture>
 
-      <button>Add to Cart</button>
+      <button>
+        <Icon name="carbon:shopping-cart-plus" />
+        Add to Cart
+      </button>
       <span>{category}</span>
       <h2>{name}</h2>
       <p>{price}</p>
