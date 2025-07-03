@@ -3,9 +3,9 @@ import Product from "./Product";
 
 export default function ProductLists() {
   return (
-    <ul>
+    <ul className="grid  gap-6 md:gap-y-8  md:grid-cols-3">
       {productsData.map((product) => (
-        <Product product={product} />
+        <Product product={product} key={Math.random()} />
       ))}
     </ul>
   );
