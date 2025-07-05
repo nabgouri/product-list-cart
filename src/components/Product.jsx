@@ -1,4 +1,5 @@
-import { Icon } from "@iconify/react/dist/iconify.js";
+import AddButton from "./AddButton";
+
 export default function Product({ product }) {
   const { image, name, category, price } = product;
   return (
@@ -9,15 +10,7 @@ export default function Product({ product }) {
           <source srcSet={image.tablet} media="(max-width: 1440px)" />
           <img src={image.desktop} alt="" className="rounded-lg " />
         </picture>
-        <button className="flex border-2 self-center rounded-[999px] text-rose-900 font-semibold text-sm items-center border-rose-400 py-3 px-7 gap-2 -mt-4 bg-white hover:border-red hover:text-red cursor-pointer">
-          <Icon
-            icon="carbon:shopping-cart-plus"
-            className="text-red"
-            height="20px"
-            width="20px"
-          />
-          Add to Cart
-        </button>
+        <AddButton product={product} />
       </div>
       <span className="mt-4 text-rose-500 text-sm inline-block ">
         {category}
