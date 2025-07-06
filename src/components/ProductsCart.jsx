@@ -1,24 +1,21 @@
-import { useContext } from "react";
+import { useContext, useRef } from "react";
 import { productCartcontext } from "../App";
 import ProductCart from "./ProductCart";
 import { Icon } from "@iconify/react/dist/iconify.js";
+import CtaButton from "./CtaButton";
+import OrderTotal from "./OrderTotal";
+import ConfirmModal from "./ConfirmModal";
 export default function ProductsCart() {
   const { products } = useContext(productCartcontext);
-  const totalPrice = products.reduce((acc, currentProduct) => {
-    return acc + currentProduct.price;
-  }, 0);
-
+  const modalRef = useRef();
   return (
     <>
       <ul className="my-6 grid gap-4">
         {products.map((product) => (
-          <ProductCart product={product} />
+          <ProductCart key={product.name} product={product} />
         ))}
       </ul>
-      <div className="flex items-center justify-between">
-        <h3 className="text-rose-900 text-sm">Order Total</h3>
-        <p className="text-rose-900 font-bold text-2xl">${totalPrice}</p>
-      </div>
+      <OrderTotal products={products} />
       <div className="flex items-center gap-2 py-4 px-[3.25rem] bg-rose-50 rounded-lg my-6 justify-center ">
         <Icon
           icon="carbon:tree"
@@ -31,6 +28,10 @@ export default function ProductsCart() {
           delivery
         </p>
       </div>
+      <CtaButton onClick={() => modalRef.current.showModal()}>
+        Confirm Order
+      </CtaButton>
+      <ConfirmModal ref={modalRef} />
     </>
   );
 }

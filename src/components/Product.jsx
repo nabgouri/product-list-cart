@@ -15,7 +15,7 @@ export default function Product({ product }) {
       <span className="mt-4 text-rose-500 text-sm inline-block ">
         {category}
       </span>
-      <h2 className="text-base text-rose-900 font-semibold my-1">{name}</h2>
+      <h2 className="text-base  font-semibold my-1">{name}</h2>
       <p className="text-base text-red font-semibold">${price}</p>
     </li>
   );
