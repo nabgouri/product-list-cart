@@ -23,6 +23,13 @@ export default function AddButton({ product }) {
     setProducts(nextProducts);
   }
   function decrementQuantity() {
+    if (diseredProduct.quantity === 1) {
+      const nextProducts = products.filter(
+        (selectedProduct) => selectedProduct.name !== diseredProduct.name
+      );
+      setProducts(nextProducts);
+      return;
+    }
     const nextProduct = { ...diseredProduct };
     nextProduct.quantity -= 1;
     const nextProducts = [...products];
@@ -50,7 +57,7 @@ export default function AddButton({ product }) {
       <button className="cursor-pointer" onClick={decrementQuantity}>
         <Icon icon="carbon:subtract-alt" width="20" height="20" />
       </button>
-      {product.quantity}
+      {products[diseredProductIndex].quantity}
       <button className="cursor-pointer " onClick={incrementQuantity}>
         <Icon
           icon="gridicons:add-outline"
